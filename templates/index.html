@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Description Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            padding: 20px;
+            background-color:rgb(131, 5, 5);
+            color: white;
+            border-radius: 10px 10px 0 0;
+        }
+        h2 {
+            margin: 10px 0;
+        }
+        input[type="file"] {
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            background-color:rgb(131, 5, 5);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color:rgb(0, 0, 0);
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+        .description {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+            padding: 15px;
+            background: #e9ecef;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h2>Mithilesh KS</h2>
+            <p>Loyola ICAM College of Engineering and Technology</p>
+            <p><strong>Project:</strong> AI Image Description Generator</p>
+            <p><strong>Reg No: </strong> 311124104079</p>
+        </div>
+
+        <h2>Upload an Image to Get a Description</h2>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*" required>
+            <br>
+            <button type="submit">Generate Description</button>
+        </form>
+
+        {% if image_path %}
+        <h3>Uploaded Image:</h3>
+        <img src="{{ image_path }}" alt="Uploaded Image">
+        {% endif %}
+
+        {% if description %}
+        <div class="description">
+            <h3>Image Description:</h3>
+            <p>{{ description }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
